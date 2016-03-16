@@ -10,6 +10,7 @@ import java.util.concurrent.Future;
 
 
 public class Main {
+	// TODO - make it so the library used, JAAD, works with any MP4 file.
 	
 	private String inURL = "";
 	private String outURL = "";
