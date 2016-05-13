@@ -1,8 +1,11 @@
 package com.Ryan_Airth.MP4_Audio_Extractor;
 
 import java.io.Console;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.DosFileAttributes;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -35,6 +38,9 @@ public class Main {
 		
 		getFileLocations();
 		validateFileLocations();
+		
+		getMetaData();
+		
 		getAudioData();
 		
 		audioExtractor = new AudioExtractor(inURL, outURL, sampleRate, 
@@ -100,5 +106,15 @@ public class Main {
 		
 		bitDepth = Integer.parseInt(console.readLine("%s", "Please enter the desired bit depth "
 				+ "for the audio. (e.g: 16, 24): "));
+	}
+	
+	private void getMetaData() {
+		Path video = Paths.get(inURL);
+		
+		try {
+			DosFileAttributes attr = Files.readAttributes(video, DosFileAttributes.class);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

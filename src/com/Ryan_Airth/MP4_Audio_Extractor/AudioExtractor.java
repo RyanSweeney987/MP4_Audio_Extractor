@@ -89,7 +89,7 @@ public class AudioExtractor implements Callable<String> {
 			
 				Movie movie = container.getMovie();
 				List<Track> tracks = movie.getTracks(AudioTrack.AudioCodec.AAC);
-							
+											
 				if(tracks.isEmpty()) throw new Exception("Video doesn't contain any AAC tracks.");
 				
 				List<Integer> tracksToExtract = getTracksToExtract(tracks.size());
@@ -132,9 +132,9 @@ public class AudioExtractor implements Callable<String> {
 		
 		while(!validEntry) {
 			String trackQuery = console.readLine("%s", numberOfTracks + " number of"
-					+ " tracks have been found, please enter the range \nof tracks you wish"
+					+ " tracks have been found, please enter the range of tracks\nyou wish"
 					+ " to extract or enter the same value twice to extract a specific"
-					+ " track. (trackFromIndex/trackToIndex) ");
+					+ " track.\n(trackFromIndex/trackToIndex) ");
 			
 			String[] values = trackQuery.split("/");
 			
